@@ -4,6 +4,222 @@
   
   
   <entry>
+    <title>Java-重写与重载</title>
+    <link href="/2023/02/09/Java-%E9%87%8D%E5%86%99%E4%B8%8E%E9%87%8D%E8%BD%BD/"/>
+    <url>/2023/02/09/Java-%E9%87%8D%E5%86%99%E4%B8%8E%E9%87%8D%E8%BD%BD/</url>
+    
+    <content type="html"><![CDATA[<p>两者关系如图：比较形象<br><img src="/img/Java/Pastedimage20230208155455.png"></p><h2 id="重写：override"><a href="#重写：override" class="headerlink" title="重写：override"></a>重写：override</h2><p>重写举例：<br><img src="/img/Java/Pastedimage20230208141514.png"><br>这里把Animal类中的move方法进行了重写，使用了extends来继承，要注意重写的内容必须一致</p><p>⬇️下面是错误示范：<br><img src="/img/Java/Pastedimage20230208141700.png"><br>因为使用了extends重写，但是原本的类中没有bark方法，重写内容与原内容不一致，所以会出错。</p><p>通过上面两个例子可以看到，在输出时new了两个对象，一个是Animal，另一个是继承了Animal的Dog，我的Dog已经继承了Animal，有没有什么办法只new Dog，除了输出重写后的内容，还能输出原本Animal的内容呢？<br>这里我们要用到的就是super：<br><img src="/img/Java/Pastedimage20230208142019.png"></p><hr><h2 id="重载：overload"><a href="#重载：overload" class="headerlink" title="重载：overload"></a>重载：overload</h2><p>同一个类中，方法名称相同，传入的参数名称不同才是方法重载<br><img src="/img/Java/Pastedimage20230208142323.png"></p><p>❗注意：<br>（1）在main中第一行new的对象一定要和文件名称一致。<br>（2）在第一个test()中return了1，因为main中直接用打印的方式获取第一个test()，所以return的内容也会被打印出来。<br>（3）第二个test()就被重载了，但是注意参数不同，和第一个test()不是一模一样的，需要传入参数的类型、个数、顺序不同</p><p>参考：<br><a href="https://www.runoob.com/">https://www.runoob.com</a></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>JAVA学习笔记</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>JAVA学习</tag>
+      
+      <tag>重写与重载</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Java-成员变量和基础变量</title>
+    <link href="/2023/02/09/Java-%E6%88%90%E5%91%98%E5%8F%98%E9%87%8F%E5%92%8C%E5%9F%BA%E7%A1%80%E5%8F%98%E9%87%8F/"/>
+    <url>/2023/02/09/Java-%E6%88%90%E5%91%98%E5%8F%98%E9%87%8F%E5%92%8C%E5%9F%BA%E7%A1%80%E5%8F%98%E9%87%8F/</url>
+    
+    <content type="html"><![CDATA[<p><img src="/img/Java/Pastedimage20230208144522.png"></p><p>成员变量存在初始值，不需要赋值：<br><mark style="background: #D2B3FFA6;">int是0，float是0.0，String是null，Boolean是false</mark></p><p>参考：<br><a href="https://www.runoob.com/">https://www.runoob.com/</a></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>JAVA学习笔记</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>JAVA学习</tag>
+      
+      <tag>成员变量和基础变量</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Java-什么是构造函数</title>
+    <link href="/2023/02/09/Java-%E4%BB%80%E4%B9%88%E6%98%AF%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0/"/>
+    <url>/2023/02/09/Java-%E4%BB%80%E4%B9%88%E6%98%AF%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0/</url>
+    
+    <content type="html"><![CDATA[<h2 id="什么是构造函数："><a href="#什么是构造函数：" class="headerlink" title="什么是构造函数："></a>什么是构造函数：</h2><p>在Java中，每个类都有它的构造函数，<mark style="background: #ADCCFFA6;">当类的对象被创建时，该构造函数将被自动调用</mark>。构造函数类似于方法，但实际上它不是方法。</p><p>如果程序员没有为一个类编写构造方法，则系统会为该类提供一个默认的且无参的构造方法。<br>所以编写代码时，构造函数不是必须的。</p><hr><h3 id="构造函数："><a href="#构造函数：" class="headerlink" title="构造函数："></a>构造函数：</h3><p>一个Java方法和Java构造函数以通过其名称和返回类型进行区分。构造函数与类的构造函数同名，并且不返回任何值。<br>例如：<br><img src="/img/Java/Pastedimage20230208151527.png"></p><hr><h3 id="非构造函数："><a href="#非构造函数：" class="headerlink" title="非构造函数："></a>非构造函数：</h3><p><img src="/img/Java/Pastedimage20230208151616.png"><br>这里，Test()与类的名称相同。但是，它有一个返回类型void。因此，它是一个方法，而不是一个构造函数。</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>JAVA学习笔记</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>JAVA学习</tag>
+      
+      <tag>什么是构造函数</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Java-final和static怎么理解</title>
+    <link href="/2023/02/09/Java-final%E5%92%8Cstatic%E6%80%8E%E4%B9%88%E7%90%86%E8%A7%A3/"/>
+    <url>/2023/02/09/Java-final%E5%92%8Cstatic%E6%80%8E%E4%B9%88%E7%90%86%E8%A7%A3/</url>
+    
+    <content type="html"><![CDATA[<h2 id="final："><a href="#final：" class="headerlink" title="final："></a>final：</h2><p>final比较关键的就是当它修饰变量时表示常量，即只能被赋值一次，并且赋值后不再改变</p><ul><li><p><code>final</code>修饰符有多种作用：</p><ul><li><code>final</code>修饰的方法可以阻止被覆写；</li></ul><p><img src="/img/Java/3581675915850.jpg"></p><ul><li><code>final</code>修饰的class可以阻止被继承；</li></ul><p><img src="/img/Java/3561675915546.jpg"></p><ul><li><code>final</code>修饰的field必须在创建对象时初始化，随后不可修改。</li></ul><p><img src="/img/Java/3591675916009.jpg"></p></li></ul><hr><h2 id="static："><a href="#static：" class="headerlink" title="static："></a>static：</h2><p>static表示“全局”或者“静态”的意思，用来修饰成员变量和成员方法，也可以形成静态static代码块</p><ul><li><p><code>static</code>修饰符：</p><ul><li><code>static</code>在类里面；</li></ul><p><img src="/img/Java/3601675916150.jpg"></p><ul><li><code>static</code>不可以修饰局部变量；</li></ul><p><img src="/img/Java/3611675916230.jpg"></p><ul><li><code>static</code>修饰的属性强调它们只有一个。</li></ul><p>下面例子中只知道唯一的ppp，但是不知道aaa，所以会报错</p><p><img src="/img/Java/3621675919848.jpg"></p></li></ul><hr><h2 id="java中的main方法为什么必须写成static？"><a href="#java中的main方法为什么必须写成static？" class="headerlink" title="java中的main方法为什么必须写成static？"></a>java中的main方法为什么必须写成static？</h2><h3 id="java的main方法是什么？"><a href="#java的main方法是什么？" class="headerlink" title="java的main方法是什么？"></a>java的main方法是什么？</h3><p>main是java应用的入口方法。</p><p>在《Java语言规范》中，对于Java虚拟机的启动给出了明确的定义：Java虚拟机是通过加载指定的类，然后调用该类中的main方法而启动的。</p><p>也就是说，通过调用某个指定类的main方法，传递给他单个的字符串数组参数，就可以启动Java虚拟机。</p><p>一个main方法想要被执行，需要经过几个步骤，首先对应的类需要被JVM加载，然后需要进行链接和初始化、之后才是调用main方法。</p><p>main必须是public，不然JVM就调不到了。</p><h3 id="静态（static）的特点："><a href="#静态（static）的特点：" class="headerlink" title="静态（static）的特点："></a>静态（static）的特点：</h3><p>那就是静态方法独立于该类的任何对象，它不依赖类特定的实例，被类的所有实例共享。只要这个类被加载，Java虚拟机就能根据类名在运行时数据区的方法区内定找到他们</p><p>比如我们例子中的ppp和aaa，没有实例化Women，但是main还是可以找到对应的ppp，因为ppp是static。</p><h3 id="main方法为什么返回void？"><a href="#main方法为什么返回void？" class="headerlink" title="main方法为什么返回void？"></a>main方法为什么返回void？</h3><p>在Java中，退出过程是由JVM进行控制的。</p><p>JVM是不会管main方法有没有执行完的，他都会终止所有行为并退出，这时候main方法的返回值是没有任何意义的</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>JAVA学习笔记</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>JAVA学习</tag>
+      
+      <tag>final和static怎么理解</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Java-this和super怎么理解</title>
+    <link href="/2023/02/09/Java-this%E5%92%8Csuper%E6%80%8E%E4%B9%88%E7%90%86%E8%A7%A3/"/>
+    <url>/2023/02/09/Java-this%E5%92%8Csuper%E6%80%8E%E4%B9%88%E7%90%86%E8%A7%A3/</url>
+    
+    <content type="html"><![CDATA[<p>下面例子中分别使用了super和this：<br><img src="/img/Java/Pastedimage20230208150124.png"></p><h2 id="super"><a href="#super" class="headerlink" title="super"></a>super</h2><p>super不难理解，比如Chinese继承了Person，super就是让Person中的方法先运行一遍，然后再重写这个方法。</p><h2 id="this"><a href="#this" class="headerlink" title="this"></a>this</h2><p>this可以看出来，例子中 Chinese 类第三种构造方法调用的是本类中第二种构造方法，（因为参数符合，所以这里调用的是第二种构造方法）<br>而第二种构造方法是调用父类的，因此也要先调用父类的构造方法，再调用本类中第二种，最后是重写第三种构造方法。</p><h2 id="区别："><a href="#区别：" class="headerlink" title="区别："></a>区别：</h2><p>super() 从子类中调用父类的构造方法，this() 在同一类内调用其它方法。</p><h2 id="相似："><a href="#相似：" class="headerlink" title="相似："></a>相似：</h2><p>super() 和 this() 均需放在构造方法内第一行。</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>JAVA学习笔记</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>JAVA学习</tag>
+      
+      <tag>this和super怎么理解</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Java接口</title>
+    <link href="/2023/02/09/Java%E6%8E%A5%E5%8F%A3/"/>
+    <url>/2023/02/09/Java%E6%8E%A5%E5%8F%A3/</url>
+    
+    <content type="html"><![CDATA[<h2 id="定义："><a href="#定义：" class="headerlink" title="定义："></a>定义：</h2><p>如果一个抽象类没有字段，所有方法全部都是抽象方法，就可以把该抽象类改写为接口：<code>interface：</code></p><figure class="highlight java"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">abstract</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Person</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">run</span><span class="hljs-params">()</span>;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> String <span class="hljs-title function_">getName</span><span class="hljs-params">()</span>;<br>&#125;<br></code></pre></td></tr></table></figure><p>所谓<code>interface</code>，就是比抽象类还要抽象的纯抽象接口，因为它连字段都不能有。因为接口定义的所有方法默认都是<code>public abstract</code>的，所以这两个修饰符不需要写出来（写不写效果都一样）。</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">interface</span> <span class="hljs-title class_">Person</span> &#123;<br>    <span class="hljs-keyword">void</span> <span class="hljs-title function_">run</span><span class="hljs-params">()</span>;<br>    String <span class="hljs-title function_">getName</span><span class="hljs-params">()</span>;<br>&#125;<br></code></pre></td></tr></table></figure><p>我们知道，在Java中，一个类只能继承（extends）自另一个类，不能从多个类继承。但是，一个类可以实现多个<code>interface</code><br>比如：</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Student</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">Person</span>, Hello &#123; <span class="hljs-comment">// 实现了两个interface</span><br>    ...<br>&#125;<br></code></pre></td></tr></table></figure><p>一个<code>interface</code>可以继承自另一个<code>interface</code>。<code>interface</code>继承自<code>interface</code>使用<code>extends</code>，它相当于扩展了接口的方法。例如：</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">interface</span> <span class="hljs-title class_">Hello</span> &#123;<br>    <span class="hljs-keyword">void</span> <span class="hljs-title function_">hello</span><span class="hljs-params">()</span>;<br>&#125;<br><br><span class="hljs-keyword">interface</span> <span class="hljs-title class_">Person</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">Hello</span> &#123;<br>    <span class="hljs-keyword">void</span> <span class="hljs-title function_">run</span><span class="hljs-params">()</span>;<br>    String <span class="hljs-title function_">getName</span><span class="hljs-params">()</span>;<br>&#125;<br></code></pre></td></tr></table></figure><p>此时，<code>Person</code>接口继承自<code>Hello</code>接口，因此，<code>Person</code>接口现在实际上有3个抽象方法签名，其中一个来自继承的<code>Hello</code>接口</p><p>同样是多态中的这段代码：<br><img src="/img/Java/Pastedimage20230208165451.png"></p><p>我们可以看到这个Animal抽象类全部是抽象方法，就可以把它改为接口。</p><p>这个向上转型和向下转型只在廖雪峰的接口讲解里面有，不过在笔记的多态中也有提及。</p><p>参考：<br><a href="https://www.liaoxuefeng.com/">https://www.liaoxuefeng.com</a><br><a href="https://www.runoob.com/">https://www.runoob.com</a></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>JAVA学习笔记</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>JAVA学习</tag>
+      
+      <tag>Java接口</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Java多态</title>
+    <link href="/2023/02/09/Java%E5%A4%9A%E6%80%81/"/>
+    <url>/2023/02/09/Java%E5%A4%9A%E6%80%81/</url>
+    
+    <content type="html"><![CDATA[<h2 id="Java多态"><a href="#Java多态" class="headerlink" title="Java多态"></a>Java多态</h2><h3 id="定义："><a href="#定义：" class="headerlink" title="定义："></a>定义：</h3><p>多态是同一个行为具有多个不同表现形式或形态的能力<br>就是允许添加更多类型的子类实现功能扩展，却不需要修改基于父类的代码</p><h3 id="比如："><a href="#比如：" class="headerlink" title="比如："></a>比如：</h3><p><img src="/img/Java/Pastedimage20230208155417.png"></p><h3 id="举例："><a href="#举例：" class="headerlink" title="举例："></a>举例：</h3><p><img src="/img/Java/Pastedimage20230208154010.png"></p><h4 id="解释："><a href="#解释：" class="headerlink" title="解释："></a>解释：</h4><p>原本Animal是父类，cat继承后再调用，其实直接<code>Cat mycat = new Cat();</code>就可以<br>但在这里Cat类赋值给了它的父类，Animal，然后eat方法是Cat中的eat方法，这种赋值给父类的方法叫向上转型。</p><figure class="highlight abnf"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><pre><code class="hljs abnf">Animal a <span class="hljs-operator">=</span> new Cat()<span class="hljs-comment">;</span><br>a.eat()<span class="hljs-comment">;</span><br></code></pre></td></tr></table></figure><p>我们已经有了Animal a这个实例，但是没有work这个函数（这个就是子类的功能拓展），然后要把这个实例转换为它的子类Cat，这种就叫向下转型。</p><figure class="highlight abnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs abnf">Cat c <span class="hljs-operator">=</span> (Cat)a<span class="hljs-comment">;</span><br>c.work()<span class="hljs-comment">;</span><br></code></pre></td></tr></table></figure><p>这就是多态的继承与延伸。</p><h3 id="什么是接口"><a href="#什么是接口" class="headerlink" title="什么是接口"></a>什么是接口</h3><p>示例中的Animal只有方法eat的定义，但是里面没有写具体的代码，这种就叫做接口</p><p>参考：<br><a href="https://www.runoob.com/java/java-polymorphism.html">https://www.runoob.com/java/java-polymorphism.html</a></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>JAVA学习笔记</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>JAVA学习</tag>
+      
+      <tag>Java多态</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Java抽象类与方法</title>
+    <link href="/2023/02/09/Java%E6%8A%BD%E8%B1%A1%E7%B1%BB%E4%B8%8E%E6%96%B9%E6%B3%95/"/>
+    <url>/2023/02/09/Java%E6%8A%BD%E8%B1%A1%E7%B1%BB%E4%B8%8E%E6%96%B9%E6%B3%95/</url>
+    
+    <content type="html"><![CDATA[<h2 id="Java抽象类与方法"><a href="#Java抽象类与方法" class="headerlink" title="Java抽象类与方法"></a>Java抽象类与方法</h2><p>我们之前学多态的时候知道了子类可以继承父类，除了重写还可以进行延伸<br>多态中有一段代码是这样的：<br><img src="/img/Java/Pastedimage20230208164046.png"></p><p>可以看到Animal没有任何实质性的代码，而且前面有一个abstract，这个就是抽象类。</p><p>一般来说，我们是要这么写父类的：</p><figure class="highlight java"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></div></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Person</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">run</span><span class="hljs-params">()</span> &#123;<br>    System.out.println(<span class="hljs-string">&quot;hihi&quot;</span>);<br>     &#125;<br>&#125;<br></code></pre></td></tr></table></figure><p>这里没有写abstract，但是run()里面是有内容的，你可能要问，反正都要重写，这个里面有内容的意义在哪里？<br>确实，没有意义，但是必须存在，如果你不想让run()里面有内容就要把它变为抽象方法。</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">abstract</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Person</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">run</span><span class="hljs-params">()</span>;<br>&#125;<br></code></pre></td></tr></table></figure><p>有了抽象方法就一定有抽象类，他们是绑在一起的。</p><p><mark style="background: #D2B3FFA6;">但是有了抽象类是有可能包括非抽象方法的。<br></mark></p><p><img src="/img/Java/3571675915718.jpg"></p><h3 id="应用实例："><a href="#应用实例：" class="headerlink" title="应用实例："></a>应用实例：</h3><p><img src="/img/Java/3551675915387.jpg"></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>JAVA学习笔记</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>JAVA学习</tag>
+      
+      <tag>Java抽象类与方法</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>关于齐博cms代码审计的思考</title>
     <link href="/2022/07/25/qibocms-thinking/"/>
     <url>/2022/07/25/qibocms-thinking/</url>
@@ -41,18 +257,11 @@
     </categories>
     
     
-  </entry>
-  
-  
-  
-  <entry>
-    <title>Hello World</title>
-    <link href="/2022/04/12/hello-world/"/>
-    <url>/2022/04/12/hello-world/</url>
-    
-    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><pre><code class="hljs bash">$ hexo new <span class="hljs-string">&quot;My New Post&quot;</span><br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo server<br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo generate<br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo deploy<br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>]]></content>
-    
-    
+    <tags>
+      
+      <tag>漏洞复现</tag>
+      
+    </tags>
     
   </entry>
   

@@ -16,20 +16,25 @@
   <meta name="author" content="zzheff">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+    <meta name="description" content="什么是构造函数：在Java中，每个类都有它的构造函数，当类的对象被创建时，该构造函数将被自动调用。构造函数类似于方法，但实际上它不是方法。 如果程序员没有为一个类编写构造方法，则系统会为该类提供一个默认的且无参的构造方法。所以编写代码时，构造函数不是必须的。  构造函数：一个Java方法和Java构造函数以通过其名称和返回类型进行区分。构造函数与类的构造函数同名，并且不返回任何值。例如：  非构造">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http://example.com/2022/04/12/hello-world/index.html">
+<meta property="og:title" content="Java-什么是构造函数">
+<meta property="og:url" content="http://example.com/2023/02/09/Java-%E4%BB%80%E4%B9%88%E6%98%AF%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta property="og:description" content="什么是构造函数：在Java中，每个类都有它的构造函数，当类的对象被创建时，该构造函数将被自动调用。构造函数类似于方法，但实际上它不是方法。 如果程序员没有为一个类编写构造方法，则系统会为该类提供一个默认的且无参的构造方法。所以编写代码时，构造函数不是必须的。  构造函数：一个Java方法和Java构造函数以通过其名称和返回类型进行区分。构造函数与类的构造函数同名，并且不返回任何值。例如：  非构造">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-04-12T03:16:16.875Z">
-<meta property="article:modified_time" content="2022-04-12T03:16:16.875Z">
+<meta property="og:image" content="http://example.com/img/Java/Pastedimage20230208151527.png">
+<meta property="og:image" content="http://example.com/img/Java/Pastedimage20230208151616.png">
+<meta property="article:published_time" content="2023-02-09T08:13:39.000Z">
+<meta property="article:modified_time" content="2023-02-09T08:17:54.864Z">
 <meta property="article:author" content="zzheff">
+<meta property="article:tag" content="JAVA学习">
+<meta property="article:tag" content="什么是构造函数">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/img/Java/Pastedimage20230208151527.png">
   
   
-  <title>Hello World - Hexo</title>
+  <title>Java-什么是构造函数 - Hexo</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
 
@@ -175,7 +180,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="Hello World">
+            <span class="h2" id="subtitle" title="Java-什么是构造函数">
               
             </span>
 
@@ -185,8 +190,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2022-04-12 11:16" pubdate>
-        2022年4月12日 上午
+      <time datetime="2023-02-09 16:13" pubdate>
+        2023年2月9日 下午
       </time>
     </span>
   
@@ -196,7 +201,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      367 字
+      251 字
     </span>
   
 
@@ -205,7 +210,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      4 分钟
+      3 分钟
     </span>
   
 
@@ -234,28 +239,37 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">Hello World</h1>
+            <h1 style="display: none">Java-什么是构造函数</h1>
             
             <div class="markdown-body">
-              <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><pre><code class="hljs bash">$ hexo new <span class="hljs-string">&quot;My New Post&quot;</span><br></code></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo server<br></code></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo generate<br></code></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo deploy<br></code></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+              <h2 id="什么是构造函数："><a href="#什么是构造函数：" class="headerlink" title="什么是构造函数："></a>什么是构造函数：</h2><p>在Java中，每个类都有它的构造函数，<mark style="background: #ADCCFFA6;">当类的对象被创建时，该构造函数将被自动调用</mark>。构造函数类似于方法，但实际上它不是方法。</p>
+<p>如果程序员没有为一个类编写构造方法，则系统会为该类提供一个默认的且无参的构造方法。<br>所以编写代码时，构造函数不是必须的。</p>
+<hr>
+<h3 id="构造函数："><a href="#构造函数：" class="headerlink" title="构造函数："></a>构造函数：</h3><p>一个Java方法和Java构造函数以通过其名称和返回类型进行区分。构造函数与类的构造函数同名，并且不返回任何值。<br>例如：<br><img src="/img/Java/Pastedimage20230208151527.png" srcset="/img/loading.gif" lazyload></p>
+<hr>
+<h3 id="非构造函数："><a href="#非构造函数：" class="headerlink" title="非构造函数："></a>非构造函数：</h3><p><img src="/img/Java/Pastedimage20230208151616.png" srcset="/img/loading.gif" lazyload><br>这里，Test()与类的名称相同。但是，它有一个返回类型void。因此，它是一个方法，而不是一个构造函数。</p>
 
             </div>
             <hr>
             <div>
               <div class="post-metas mb-3">
                 
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/JAVA%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">JAVA学习笔记</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/JAVA%E5%AD%A6%E4%B9%A0/">JAVA学习</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E4%BB%80%E4%B9%88%E6%98%AF%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0/">什么是构造函数</a>
+                    
+                  </div>
                 
               </div>
               
@@ -270,15 +284,21 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/07/12/qibocms-sql/">
+                      <a href="/2023/02/09/Java-%E6%88%90%E5%91%98%E5%8F%98%E9%87%8F%E5%92%8C%E5%9F%BA%E7%A1%80%E5%8F%98%E9%87%8F/">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">齐博CMS-SQL注入</span>
+                        <span class="hidden-mobile">Java-成员变量和基础变量</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
                   </article>
                   <article class="post-next col-6">
                     
+                    
+                      <a href="/2023/02/09/Java-final%E5%92%8Cstatic%E6%80%8E%E4%B9%88%E7%90%86%E8%A7%A3/">
+                        <span class="hidden-mobile">Java-final和static怎么理解</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
                     
                   </article>
                 </div>
