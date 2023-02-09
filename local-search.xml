@@ -31,9 +31,9 @@
   
   
   <entry>
-    <title>Java-成员变量和基础变量</title>
-    <link href="/2023/02/09/Java-%E6%88%90%E5%91%98%E5%8F%98%E9%87%8F%E5%92%8C%E5%9F%BA%E7%A1%80%E5%8F%98%E9%87%8F/"/>
-    <url>/2023/02/09/Java-%E6%88%90%E5%91%98%E5%8F%98%E9%87%8F%E5%92%8C%E5%9F%BA%E7%A1%80%E5%8F%98%E9%87%8F/</url>
+    <title>Java-成员变量和局部变量</title>
+    <link href="/2023/02/09/Java-%E6%88%90%E5%91%98%E5%8F%98%E9%87%8F%E5%92%8C%E5%B1%80%E9%83%A8%E5%8F%98%E9%87%8F/"/>
+    <url>/2023/02/09/Java-%E6%88%90%E5%91%98%E5%8F%98%E9%87%8F%E5%92%8C%E5%B1%80%E9%83%A8%E5%8F%98%E9%87%8F/</url>
     
     <content type="html"><![CDATA[<p><img src="/img/Java/Pastedimage20230208144522.png"></p><p>成员变量存在初始值，不需要赋值：<br><mark style="background: #D2B3FFA6;">int是0，float是0.0，String是null，Boolean是false</mark></p><p>参考：<br><a href="https://www.runoob.com/">https://www.runoob.com/</a></p>]]></content>
     
@@ -49,7 +49,7 @@
       
       <tag>JAVA学习</tag>
       
-      <tag>成员变量和基础变量</tag>
+      <tag>成员变量和局部变量</tag>
       
     </tags>
     
