@@ -16,28 +16,29 @@
   <meta name="author" content="zzheff">
   <meta name="keywords" content="">
   
-    <meta name="description" content="两者关系如图：比较形象 重写：override重写举例：这里把Animal类中的move方法进行了重写，使用了extends来继承，要注意重写的内容必须一致 ⬇️下面是错误示范：因为使用了extends重写，但是原本的类中没有bark方法，重写内容与原内容不一致，所以会出错。 通过上面两个例子可以看到，在输出时new了两个对象，一个是Animal，另一个是继承了Animal的Dog，我的Dog已经">
+    <meta name="description" content="第一步：获取wzapkg结尾文件本文采用的方式是模拟器获取，手机上获取的方式应该也差不多。 模拟器：MuMu 模拟器下载微信，登陆后打开对应的小程序（只是打开过就可以了）然后建议使用RE文件管理器（Root Explorer），直接安装apk就可以，4.11.3版本http:&#x2F;&#x2F;mumu-apk.fp.ps.netease.com&#x2F;file&#x2F;639076c54940ea5743c081e2Ui9x">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Java-重写与重载">
-<meta property="og:url" content="http://example.com/2023/02/09/Java-%E9%87%8D%E5%86%99%E4%B8%8E%E9%87%8D%E8%BD%BD/index.html">
+<meta property="og:title" content="怎么获取微信小程序源码">
+<meta property="og:url" content="http://example.com/2023/02/10/%E6%80%8E%E4%B9%88%E8%8E%B7%E5%8F%96%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E6%BA%90%E7%A0%81/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="两者关系如图：比较形象 重写：override重写举例：这里把Animal类中的move方法进行了重写，使用了extends来继承，要注意重写的内容必须一致 ⬇️下面是错误示范：因为使用了extends重写，但是原本的类中没有bark方法，重写内容与原内容不一致，所以会出错。 通过上面两个例子可以看到，在输出时new了两个对象，一个是Animal，另一个是继承了Animal的Dog，我的Dog已经">
+<meta property="og:description" content="第一步：获取wzapkg结尾文件本文采用的方式是模拟器获取，手机上获取的方式应该也差不多。 模拟器：MuMu 模拟器下载微信，登陆后打开对应的小程序（只是打开过就可以了）然后建议使用RE文件管理器（Root Explorer），直接安装apk就可以，4.11.3版本http:&#x2F;&#x2F;mumu-apk.fp.ps.netease.com&#x2F;file&#x2F;639076c54940ea5743c081e2Ui9x">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/img/Java/Pastedimage20230208155455.png">
-<meta property="og:image" content="http://example.com/img/Java/Pastedimage20230208141514.png">
-<meta property="og:image" content="http://example.com/img/Java/Pastedimage20230208141700.png">
-<meta property="og:image" content="http://example.com/img/Java/Pastedimage20230208142019.png">
-<meta property="og:image" content="http://example.com/img/Java/Pastedimage20230208142323.png">
-<meta property="article:published_time" content="2023-02-09T08:28:39.000Z">
-<meta property="article:modified_time" content="2023-02-09T08:35:24.326Z">
+<meta property="og:image" content="http://example.com/img/miniprogram/Pastedimage20230210131037.png">
+<meta property="og:image" content="http://example.com/img/miniprogram/screenshot20230210102559.png">
+<meta property="og:image" content="http://example.com/img/miniprogram/Pastedimage20230210131845.png">
+<meta property="og:image" content="http://example.com/img/miniprogram/Pastedimage20230210132200.png">
+<meta property="og:image" content="http://example.com/img/miniprogram/Pastedimage20230210132341.png">
+<meta property="og:image" content="http://example.com/img/miniprogram/Pastedimage20230210132538.png">
+<meta property="article:published_time" content="2023-02-10T05:29:02.000Z">
+<meta property="article:modified_time" content="2023-02-10T05:49:52.173Z">
 <meta property="article:author" content="zzheff">
-<meta property="article:tag" content="JAVA学习">
-<meta property="article:tag" content="重写与重载">
+<meta property="article:tag" content="微信小程序学习">
+<meta property="article:tag" content="怎么获取小程序源码">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://example.com/img/Java/Pastedimage20230208155455.png">
+<meta name="twitter:image" content="http://example.com/img/miniprogram/Pastedimage20230210131037.png">
   
   
-  <title>Java-重写与重载 - Hexo</title>
+  <title>怎么获取微信小程序源码 - Hexo</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
 
@@ -183,7 +184,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="Java-重写与重载">
+            <span class="h2" id="subtitle" title="怎么获取微信小程序源码">
               
             </span>
 
@@ -193,8 +194,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2023-02-09 16:28" pubdate>
-        2023年2月9日 下午
+      <time datetime="2023-02-10 13:29" pubdate>
+        2023年2月10日 下午
       </time>
     </span>
   
@@ -204,7 +205,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      494 字
+      966 字
     </span>
   
 
@@ -213,7 +214,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      5 分钟
+      9 分钟
     </span>
   
 
@@ -242,17 +243,33 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">Java-重写与重载</h1>
+            <h1 style="display: none">怎么获取微信小程序源码</h1>
             
             <div class="markdown-body">
-              <p>两者关系如图：比较形象<br><img src="/img/Java/Pastedimage20230208155455.png" srcset="/img/loading.gif" lazyload></p>
-<h2 id="重写：override"><a href="#重写：override" class="headerlink" title="重写：override"></a>重写：override</h2><p>重写举例：<br><img src="/img/Java/Pastedimage20230208141514.png" srcset="/img/loading.gif" lazyload><br>这里把Animal类中的move方法进行了重写，使用了extends来继承，要注意重写的内容必须一致</p>
-<p>⬇️下面是错误示范：<br><img src="/img/Java/Pastedimage20230208141700.png" srcset="/img/loading.gif" lazyload><br>因为使用了extends重写，但是原本的类中没有bark方法，重写内容与原内容不一致，所以会出错。</p>
-<p>通过上面两个例子可以看到，在输出时new了两个对象，一个是Animal，另一个是继承了Animal的Dog，我的Dog已经继承了Animal，有没有什么办法只new Dog，除了输出重写后的内容，还能输出原本Animal的内容呢？<br>这里我们要用到的就是super：<br><img src="/img/Java/Pastedimage20230208142019.png" srcset="/img/loading.gif" lazyload></p>
-<hr>
-<h2 id="重载：overload"><a href="#重载：overload" class="headerlink" title="重载：overload"></a>重载：overload</h2><p>同一个类中，方法名称相同，传入的参数名称不同才是方法重载<br><img src="/img/Java/Pastedimage20230208142323.png" srcset="/img/loading.gif" lazyload></p>
-<p>❗注意：<br>（1）在main中第一行new的对象一定要和文件名称一致。<br>（2）在第一个test()中return了1，因为main中直接用打印的方式获取第一个test()，所以return的内容也会被打印出来。<br>（3）第二个test()就被重载了，但是注意参数不同，和第一个test()不是一模一样的，需要传入参数的类型、个数、顺序不同</p>
-<p>参考：<br><a target="_blank" rel="noopener" href="https://www.runoob.com/">https://www.runoob.com</a></p>
+              <h2 id="第一步：获取wzapkg结尾文件"><a href="#第一步：获取wzapkg结尾文件" class="headerlink" title="第一步：获取wzapkg结尾文件"></a>第一步：获取wzapkg结尾文件</h2><p>本文采用的方式是模拟器获取，手机上获取的方式应该也差不多。</p>
+<p>模拟器：MuMu</p>
+<p>模拟器下载微信，登陆后打开对应的小程序（只是打开过就可以了）<br>然后建议使用RE文件管理器（Root Explorer），直接安装apk就可以，4.11.3版本<br><a target="_blank" rel="noopener" href="http://mumu-apk.fp.ps.netease.com/file/639076c54940ea5743c081e2Ui9xm85O04.apk">http://mumu-apk.fp.ps.netease.com/file/639076c54940ea5743c081e2Ui9xm85O04.apk</a></p>
+<p>打开如果提示没有root权限，在MuMu的右上角-菜单-系统设置：</p>
+<p><img src="/img/miniprogram/Pastedimage20230210131037.png" srcset="/img/loading.gif" lazyload></p>
+<p>打开文件后按以下路径：</p>
+<p><img src="/img/miniprogram/screenshot20230210102559.png" srcset="/img/loading.gif" lazyload></p>
+<p>如果你打开过多个小程序，到了MicroMsg这个文件夹下，可能会有其他类似c25772…这种长字符串的文件夹，可以试着都删除，然后重新打开你要源码的那个小程序重新生成。</p>
+<p>这些文件中我们选<mark style="background: #FFB86CA6;">最小MB</mark>的<code>.wzapkg</code>文件，长按文件即可复制。<br>在“存储”的位置选择“MuMu共享文件夹”，把<mark style="background: #FFB86CA6;">最小MB</mark>的<code>.wzapkg</code>文件粘贴到里面。</p>
+<h2 id="第二步：解密"><a href="#第二步：解密" class="headerlink" title="第二步：解密"></a>第二步：解密</h2><p>有的小程序包是加密的，所以需要用到解密工具：</p>
+<p><img src="/img/miniprogram/Pastedimage20230210131845.png" srcset="/img/loading.gif" lazyload></p>
+<p>工具获取地址：（不是本人开发，建议在虚拟机中运行）<br>链接: <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1PBW9X_9sId4aHe4WwpaHiA?pwd=2nbl">https://pan.baidu.com/s/1PBW9X_9sId4aHe4WwpaHiA?pwd=2nbl</a> 提取码: 2nbl</p>
+<p>解密后的文件仍然是<code>.wzapkg</code>结尾的，然后我们需要另外一个工具进行反编译，反编译工具需要提前安装好node，不然会报错。</p>
+<p>需要已安装node，可以在终端输入：</p>
+<figure class="highlight crmsh"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><pre><code class="hljs crmsh"><span class="hljs-keyword">node</span> <span class="hljs-title">-v</span><br></code></pre></td></tr></table></figure>
+<p>如果显示版本信息就没问题，如果无法识别指令，需要到官网下载：<br><a target="_blank" rel="noopener" href="https://nodejs.org/en/download/">https://nodejs.org/en/download/</a></p>
+<h2 id="第三步：反编译"><a href="#第三步：反编译" class="headerlink" title="第三步：反编译"></a>第三步：反编译</h2><p>node安装完成后运行以下工具进行反编译：</p>
+<p><img src="/img/miniprogram/Pastedimage20230210132200.png" srcset="/img/loading.gif" lazyload></p>
+<p>工具获取地址：（不是本人开发，建议在虚拟机中运行）<br>链接: <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1zFmr02iD0hZCJWTG2H1cCg?pwd=8jov">https://pan.baidu.com/s/1zFmr02iD0hZCJWTG2H1cCg?pwd=8jov</a> 提取码: 8jov</p>
+<p>反编译成功后会在“执行日志”中写出存储路径：</p>
+<p><img src="/img/miniprogram/Pastedimage20230210132341.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="第四步：查看源码"><a href="#第四步：查看源码" class="headerlink" title="第四步：查看源码"></a>第四步：查看源码</h2><p>根据路径找到文件，我看其他师傅直接使用visual studio查看app.js<br>，不过我使用的还是小程序开发工具：</p>
+<p><img src="/img/miniprogram/Pastedimage20230210132538.png" srcset="/img/loading.gif" lazyload></p>
+<p>小程序开发工具下载地址：<br><a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/miniprogram/dev/devtools/download.html">https://developers.weixin.qq.com/miniprogram/dev/devtools/download.html</a></p>
 
             </div>
             <hr>
@@ -262,7 +279,7 @@
                   <div class="post-meta mr-3">
                     <i class="iconfont icon-category"></i>
                     
-                      <a class="hover-with-bg" href="/categories/JAVA%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">JAVA学习笔记</a>
+                      <a class="hover-with-bg" href="/categories/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">微信小程序学习笔记</a>
                     
                   </div>
                 
@@ -270,9 +287,9 @@
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/tags/JAVA%E5%AD%A6%E4%B9%A0/">JAVA学习</a>
+                      <a class="hover-with-bg" href="/tags/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%AD%A6%E4%B9%A0/">微信小程序学习</a>
                     
-                      <a class="hover-with-bg" href="/tags/%E9%87%8D%E5%86%99%E4%B8%8E%E9%87%8D%E8%BD%BD/">重写与重载</a>
+                      <a class="hover-with-bg" href="/tags/%E6%80%8E%E4%B9%88%E8%8E%B7%E5%8F%96%E5%B0%8F%E7%A8%8B%E5%BA%8F%E6%BA%90%E7%A0%81/">怎么获取小程序源码</a>
                     
                   </div>
                 
@@ -289,18 +306,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/02/10/%E6%80%8E%E4%B9%88%E8%8E%B7%E5%8F%96%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E6%BA%90%E7%A0%81/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">怎么获取微信小程序源码</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/02/09/Java-%E6%88%90%E5%91%98%E5%8F%98%E9%87%8F%E5%92%8C%E5%B1%80%E9%83%A8%E5%8F%98%E9%87%8F/">
-                        <span class="hidden-mobile">Java-成员变量和局部变量</span>
+                      <a href="/2023/02/09/Java-%E9%87%8D%E5%86%99%E4%B8%8E%E9%87%8D%E8%BD%BD/">
+                        <span class="hidden-mobile">Java-重写与重载</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
