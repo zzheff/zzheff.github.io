@@ -16,29 +16,38 @@
   <meta name="author" content="zzheff">
   <meta name="keywords" content="">
   
-    <meta name="description" content="第一步：获取wzapkg结尾文件本文采用的方式是模拟器获取，手机上获取的方式应该也差不多。 模拟器：MuMu 模拟器下载微信，登陆后打开对应的小程序（只是打开过就可以了）然后建议使用RE文件管理器（Root Explorer），直接安装apk就可以，4.11.3版本http:&#x2F;&#x2F;mumu-apk.fp.ps.netease.com&#x2F;file&#x2F;639076c54940ea5743c081e2Ui9x">
+    <meta name="description" content="前言做渗透测试的时候，有的登陆界面没有验证码或者验证码失效，就为我们的爆破提供了很好的机会，但是抓包一看密码是加密的，burp上有自己的加密🔐功能，所以对于base64和md5这种基础加密是不用犯愁的。那么遇到目标自定义的前端加密方法时又该怎么办呢？ 正文使用工具：GitHub - c0ny1&#x2F;jsEncrypter: 一个用于前端加密Fuzz的Burp Suite插件 还需要下载：D">
 <meta property="og:type" content="article">
-<meta property="og:title" content="怎么获取微信小程序源码">
-<meta property="og:url" content="http://example.com/2023/02/10/%E6%80%8E%E4%B9%88%E8%8E%B7%E5%8F%96%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E6%BA%90%E7%A0%81/index.html">
+<meta property="og:title" content="爆破时前端加密怎么办">
+<meta property="og:url" content="http://example.com/2023/02/10/%E7%88%86%E7%A0%B4%E6%97%B6%E5%89%8D%E7%AB%AF%E5%8A%A0%E5%AF%86%E6%80%8E%E4%B9%88%E5%8A%9E/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="第一步：获取wzapkg结尾文件本文采用的方式是模拟器获取，手机上获取的方式应该也差不多。 模拟器：MuMu 模拟器下载微信，登陆后打开对应的小程序（只是打开过就可以了）然后建议使用RE文件管理器（Root Explorer），直接安装apk就可以，4.11.3版本http:&#x2F;&#x2F;mumu-apk.fp.ps.netease.com&#x2F;file&#x2F;639076c54940ea5743c081e2Ui9x">
+<meta property="og:description" content="前言做渗透测试的时候，有的登陆界面没有验证码或者验证码失效，就为我们的爆破提供了很好的机会，但是抓包一看密码是加密的，burp上有自己的加密🔐功能，所以对于base64和md5这种基础加密是不用犯愁的。那么遇到目标自定义的前端加密方法时又该怎么办呢？ 正文使用工具：GitHub - c0ny1&#x2F;jsEncrypter: 一个用于前端加密Fuzz的Burp Suite插件 还需要下载：D">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/img/miniprogram/Pastedimage20230210131037.png">
-<meta property="og:image" content="http://example.com/img/miniprogram/screenshot20230210102559.png">
-<meta property="og:image" content="http://example.com/img/miniprogram/Pastedimage20230210131845.png">
-<meta property="og:image" content="http://example.com/img/miniprogram/Pastedimage20230210132200.png">
-<meta property="og:image" content="http://example.com/img/miniprogram/Pastedimage20230210132341.png">
-<meta property="og:image" content="http://example.com/img/miniprogram/Pastedimage20230210132538.png">
-<meta property="article:published_time" content="2023-02-10T05:29:02.000Z">
-<meta property="article:modified_time" content="2023-02-10T05:49:52.173Z">
+<meta property="og:image" content="http://example.com/img/crypfront/Pastedimage20221111174837.png">
+<meta property="og:image" content="http://example.com/img/crypfront/Pastedimage20221111182929.png">
+<meta property="og:image" content="http://example.com/img/crypfront/Pastedimage20221111174406.png">
+<meta property="og:image" content="http://example.com/img/crypfront/3641676009820_.pic.jpg">
+<meta property="og:image" content="http://example.com/img/crypfront/3651676010002_.pic.jpg">
+<meta property="og:image" content="http://example.com/img/crypfront/3661676010049_.pic.jpg">
+<meta property="og:image" content="http://example.com/img/crypfront/Pastedimage20221111182554.png">
+<meta property="og:image" content="http://example.com/img/crypfront/Pastedimage20221111182646.png">
+<meta property="og:image" content="http://example.com/img/crypfront/Pastedimage20221111181751.png">
+<meta property="og:image" content="http://example.com/img/crypfront/Pastedimage20221111182710.png">
+<meta property="og:image" content="http://example.com/img/crypfront/Pastedimage20221111183443.png">
+<meta property="og:image" content="http://example.com/img/crypfront/Pastedimage20221111183834.png">
+<meta property="og:image" content="http://example.com/img/crypfront/Pastedimage20221111183723.png">
+<meta property="og:image" content="http://example.com/img/crypfront/Pastedimage20221114091925.png">
+<meta property="og:image" content="http://example.com/img/crypfront/Pastedimage20221111184021.png">
+<meta property="article:published_time" content="2023-02-10T06:00:46.000Z">
+<meta property="article:modified_time" content="2023-02-10T07:03:10.480Z">
 <meta property="article:author" content="zzheff">
-<meta property="article:tag" content="微信小程序学习">
-<meta property="article:tag" content="怎么获取小程序源码">
+<meta property="article:tag" content="安全学习">
+<meta property="article:tag" content="爆破时前端加密怎么办">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://example.com/img/miniprogram/Pastedimage20230210131037.png">
+<meta name="twitter:image" content="http://example.com/img/crypfront/Pastedimage20221111174837.png">
   
   
-  <title>怎么获取微信小程序源码 - Hexo</title>
+  <title>爆破时前端加密怎么办 - Hexo</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
 
@@ -184,7 +193,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="怎么获取微信小程序源码">
+            <span class="h2" id="subtitle" title="爆破时前端加密怎么办">
               
             </span>
 
@@ -194,7 +203,7 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2023-02-10 13:29" pubdate>
+      <time datetime="2023-02-10 14:00" pubdate>
         2023年2月10日 下午
       </time>
     </span>
@@ -205,7 +214,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      966 字
+      978 字
     </span>
   
 
@@ -243,33 +252,51 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">怎么获取微信小程序源码</h1>
+            <h1 style="display: none">爆破时前端加密怎么办</h1>
             
             <div class="markdown-body">
-              <h2 id="第一步：获取wzapkg结尾文件"><a href="#第一步：获取wzapkg结尾文件" class="headerlink" title="第一步：获取wzapkg结尾文件"></a>第一步：获取wzapkg结尾文件</h2><p>本文采用的方式是模拟器获取，手机上获取的方式应该也差不多。</p>
-<p>模拟器：MuMu</p>
-<p>模拟器下载微信，登陆后打开对应的小程序（只是打开过就可以了）<br>然后建议使用RE文件管理器（Root Explorer），直接安装apk就可以，4.11.3版本<br><a target="_blank" rel="noopener" href="http://mumu-apk.fp.ps.netease.com/file/639076c54940ea5743c081e2Ui9xm85O04.apk">http://mumu-apk.fp.ps.netease.com/file/639076c54940ea5743c081e2Ui9xm85O04.apk</a></p>
-<p>打开如果提示没有root权限，在MuMu的右上角-菜单-系统设置：</p>
-<p><img src="/img/miniprogram/Pastedimage20230210131037.png" srcset="/img/loading.gif" lazyload></p>
-<p>打开文件后按以下路径：</p>
-<p><img src="/img/miniprogram/screenshot20230210102559.png" srcset="/img/loading.gif" lazyload></p>
-<p>如果你打开过多个小程序，到了MicroMsg这个文件夹下，可能会有其他类似c25772…这种长字符串的文件夹，可以试着都删除，然后重新打开你要源码的那个小程序重新生成。</p>
-<p>这些文件中我们选<mark style="background: #FFB86CA6;">最小MB</mark>的<code>.wzapkg</code>文件，长按文件即可复制。<br>在“存储”的位置选择“MuMu共享文件夹”，把<mark style="background: #FFB86CA6;">最小MB</mark>的<code>.wzapkg</code>文件粘贴到里面。</p>
-<h2 id="第二步：解密"><a href="#第二步：解密" class="headerlink" title="第二步：解密"></a>第二步：解密</h2><p>有的小程序包是加密的，所以需要用到解密工具：</p>
-<p><img src="/img/miniprogram/Pastedimage20230210131845.png" srcset="/img/loading.gif" lazyload></p>
-<p>工具获取地址：（不是本人开发，建议在虚拟机中运行）<br>链接: <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1PBW9X_9sId4aHe4WwpaHiA?pwd=2nbl">https://pan.baidu.com/s/1PBW9X_9sId4aHe4WwpaHiA?pwd=2nbl</a> 提取码: 2nbl</p>
-<p>解密后的文件仍然是<code>.wzapkg</code>结尾的，然后我们需要另外一个工具进行反编译，反编译工具需要提前安装好node，不然会报错。</p>
-<p>需要已安装node，可以在终端输入：</p>
-<figure class="highlight crmsh"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><pre><code class="hljs crmsh"><span class="hljs-keyword">node</span> <span class="hljs-title">-v</span><br></code></pre></td></tr></table></figure>
-<p>如果显示版本信息就没问题，如果无法识别指令，需要到官网下载：<br><a target="_blank" rel="noopener" href="https://nodejs.org/en/download/">https://nodejs.org/en/download/</a></p>
-<h2 id="第三步：反编译"><a href="#第三步：反编译" class="headerlink" title="第三步：反编译"></a>第三步：反编译</h2><p>node安装完成后运行以下工具进行反编译：</p>
-<p><img src="/img/miniprogram/Pastedimage20230210132200.png" srcset="/img/loading.gif" lazyload></p>
-<p>工具获取地址：（不是本人开发，建议在虚拟机中运行）<br>链接: <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1zFmr02iD0hZCJWTG2H1cCg?pwd=8jov">https://pan.baidu.com/s/1zFmr02iD0hZCJWTG2H1cCg?pwd=8jov</a> 提取码: 8jov</p>
-<p>反编译成功后会在“执行日志”中写出存储路径：</p>
-<p><img src="/img/miniprogram/Pastedimage20230210132341.png" srcset="/img/loading.gif" lazyload></p>
-<h2 id="第四步：查看源码"><a href="#第四步：查看源码" class="headerlink" title="第四步：查看源码"></a>第四步：查看源码</h2><p>根据路径找到文件，我看其他师傅直接使用visual studio查看app.js<br>，不过我使用的还是小程序开发工具：</p>
-<p><img src="/img/miniprogram/Pastedimage20230210132538.png" srcset="/img/loading.gif" lazyload></p>
-<p>小程序开发工具下载地址：<br><a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/miniprogram/dev/devtools/download.html">https://developers.weixin.qq.com/miniprogram/dev/devtools/download.html</a></p>
+              <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>做渗透测试的时候，有的登陆界面没有验证码或者验证码失效，就为我们的爆破提供了很好的机会，但是抓包一看密码是加密的，burp上有自己的加密🔐功能，所以对于base64和md5这种基础加密是不用犯愁的。那么遇到目标自定义的前端加密方法时又该怎么办呢？</p>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>使用工具：<br><a target="_blank" rel="noopener" href="https://github.com/c0ny1/jsEncrypter">GitHub - c0ny1&#x2F;jsEncrypter: 一个用于前端加密Fuzz的Burp Suite插件</a></p>
+<p>还需要下载：<br><a target="_blank" rel="noopener" href="https://phantomjs.org/download.html">Download PhantomJS</a></p>
+<h3 id="具体使用："><a href="#具体使用：" class="headerlink" title="具体使用："></a>具体使用：</h3><h4 id="第一步：在burp中安装插件"><a href="#第一步：在burp中安装插件" class="headerlink" title="第一步：在burp中安装插件"></a>第一步：在burp中安装插件</h4><p>这是jsEncrypter里面自带的：</p>
+<p><img src="/img/crypfront/Pastedimage20221111174837.png" srcset="/img/loading.gif" lazyload></p>
+<p>我们把jsEncrypter.0.3.2.jar这个包加载到burp的插件里面</p>
+<p><img src="/img/crypfront/Pastedimage20221111182929.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="第二步：F12找加密算法"><a href="#第二步：F12找加密算法" class="headerlink" title="第二步：F12找加密算法"></a>第二步：F12找加密算法</h4><p>然后回到jsEncrypter文件下：<br>先看一下phantomjs_server.js的内容示例：</p>
+<p><img src="/img/crypfront/Pastedimage20221111174406.png" srcset="/img/loading.gif" lazyload></p>
+<p>比如用户名被加密了，就搜关键字然后找到加密函数</p>
+<p><img src="/img/crypfront/3641676009820_.pic.jpg" srcset="/img/loading.gif" lazyload></p>
+<p>搜加密的函数：也就是图中的<mark style="background: #FF5582A6;">2.调用函数</mark></p>
+<p><img src="/img/crypfront/3651676010002_.pic.jpg" srcset="/img/loading.gif" lazyload></p>
+<p>然后在之前图上的<mark style="background: #FF5582A6;">2.调用函数</mark>位置写：aesMinEncrypt</p>
+<p>然后找到这个加密的引用，下载下来：作为示例中的<mark style="background: #FF5582A6;">1.引入文件</mark></p>
+<p><img src="/img/crypfront/3661676010049_.pic.jpg" srcset="/img/loading.gif" lazyload></p>
+<p>然后和jsEncrypter文件保存在一起，phantomjs也最好在同一目录下：</p>
+<p><img src="/img/crypfront/Pastedimage20221111182554.png" srcset="/img/loading.gif" lazyload></p>
+<p>最后phantomjs_server.js写成这样：</p>
+<p><img src="/img/crypfront/Pastedimage20221111182646.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="第三步：启动phantomjs"><a href="#第三步：启动phantomjs" class="headerlink" title="第三步：启动phantomjs"></a>第三步：启动phantomjs</h4><p>然后使用phantomjs启动：</p>
+<p>如果phantomjs启动有问题，尝试下面的语句，如果能正常输出版本信息就没问题了：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><pre><code class="hljs bash">OPENSSL_CONF=/etc/ssl ./phantomjs --version<br></code></pre></td></tr></table></figure>
+<p><img src="/img/crypfront/Pastedimage20221111181751.png" srcset="/img/loading.gif" lazyload></p>
+<p>phantomjs_server.js（一定要用sudo）</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo OPENSSL_CONF=/etc/ssl ./phantomjs phantomjs_server.js<br></code></pre></td></tr></table></figure>
+<p><img src="/img/crypfront/Pastedimage20221111182710.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="第四步：burp测试"><a href="#第四步：burp测试" class="headerlink" title="第四步：burp测试"></a>第四步：burp测试</h4><p>然后返回burp进行connect和test：</p>
+<p>如果出错后我们就回到phantomjs_server.js进行修改：</p>
+<p><img src="/img/crypfront/Pastedimage20221111183443.png" srcset="/img/loading.gif" lazyload></p>
+<p>把加密函数整个复制过来变成这样：</p>
+<p><img src="/img/crypfront/Pastedimage20221111183834.png" srcset="/img/loading.gif" lazyload></p>
+<p>成功啦：</p>
+<p><img src="/img/crypfront/Pastedimage20221111183723.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="第五步：启动插件自动加密爆破"><a href="#第五步：启动插件自动加密爆破" class="headerlink" title="第五步：启动插件自动加密爆破"></a>第五步：启动插件自动加密爆破</h4><p>然后就用加密好的在burp中进行intruder（我们导入正常的明文字典就可以哦）</p>
+<p><img src="/img/crypfront/Pastedimage20221114091925.png" srcset="/img/loading.gif" lazyload></p>
+<p>需要注意的是运行intruder时不能把这条命令退出，否则会报连接超时的错误：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo OPENSSL_CONF=/etc/ssl ./phantomjs phantomjs_server.js<br></code></pre></td></tr></table></figure>
+
+
+<h4 id="第六步：查找对应明文"><a href="#第六步：查找对应明文" class="headerlink" title="第六步：查找对应明文"></a>第六步：查找对应明文</h4><p>爆破完成后在这里找对应的明文：</p>
+<p><img src="/img/crypfront/Pastedimage20221111184021.png" srcset="/img/loading.gif" lazyload></p>
 
             </div>
             <hr>
@@ -279,7 +306,7 @@
                   <div class="post-meta mr-3">
                     <i class="iconfont icon-category"></i>
                     
-                      <a class="hover-with-bg" href="/categories/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">微信小程序学习笔记</a>
+                      <a class="hover-with-bg" href="/categories/%E5%AE%89%E5%85%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">安全学习笔记</a>
                     
                   </div>
                 
@@ -287,9 +314,9 @@
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/tags/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%AD%A6%E4%B9%A0/">微信小程序学习</a>
+                      <a class="hover-with-bg" href="/tags/%E5%AE%89%E5%85%A8%E5%AD%A6%E4%B9%A0/">安全学习</a>
                     
-                      <a class="hover-with-bg" href="/tags/%E6%80%8E%E4%B9%88%E8%8E%B7%E5%8F%96%E5%B0%8F%E7%A8%8B%E5%BA%8F%E6%BA%90%E7%A0%81/">怎么获取小程序源码</a>
+                      <a class="hover-with-bg" href="/tags/%E7%88%86%E7%A0%B4%E6%97%B6%E5%89%8D%E7%AB%AF%E5%8A%A0%E5%AF%86%E6%80%8E%E4%B9%88%E5%8A%9E/">爆破时前端加密怎么办</a>
                     
                   </div>
                 
@@ -306,18 +333,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/02/10/%E7%88%86%E7%A0%B4%E6%97%B6%E5%89%8D%E7%AB%AF%E5%8A%A0%E5%AF%86%E6%80%8E%E4%B9%88%E5%8A%9E/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">爆破时前端加密怎么办</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/02/09/Java-%E9%87%8D%E5%86%99%E4%B8%8E%E9%87%8D%E8%BD%BD/">
-                        <span class="hidden-mobile">Java-重写与重载</span>
+                      <a href="/2023/02/10/%E6%80%8E%E4%B9%88%E8%8E%B7%E5%8F%96%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E6%BA%90%E7%A0%81/">
+                        <span class="hidden-mobile">怎么获取微信小程序源码</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
